@@ -1,10 +1,10 @@
 #include "libft.h"
 
-void    ft_putendl_fd(char *s, int fd)
+void	ft_putendl_fd(char *s, int fd)
 {
-    if(fd < 0 || !(s))
-        return ;
+	if (fd < 0 || !(s))
+		return ;
 
-    write(fd, s, ft_strlen(s));
-    write(fd, "\n", 1);
+	write(fd, s, ft_strlen(s));
+	write(fd, "\n", 1);
 }
