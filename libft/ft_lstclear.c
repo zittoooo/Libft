@@ -7,7 +7,7 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 
 	cur = *lst;
 
-	while(cur)
+	while (cur)
 	{
 		next = cur->next;
 		ft_lstdelone(cur, del);
