@@ -2,8 +2,6 @@
 
 void	*ft_memset(void *dest, int fillchar, size_t len)
 {
-	if (!dest)
-		return (NULL);
 	size_t	i;
 
 	i = 0;
