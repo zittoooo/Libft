@@ -1,7 +1,7 @@
 #include "libft.h"
 
 
-static int		count_words(char *str, char c)
+static int		count_words(const char *str, char c)
 {
 	int	i;
 	int	words;
@@ -32,7 +32,7 @@ static int		words_len(char const *s, char c)
 	return (len);
 }
 
-static void		*lead(char **splitted, int words)
+static void		*leak(char **splitted, int words)
 {
 	int	i;
 

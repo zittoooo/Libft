@@ -4,11 +4,9 @@ int		ft_atoi(const char *str)
 {
 	int	sign;
 	int	res;
-	int	i;
 
 	res = 0;
 	sign = 1;
-	i = 0;
 
 	while (*str && (*str == ' ' || *str == '\n' || *str == '\t' ||
 	*str == '\v' || *str == '\f' || *str == '\r'))
