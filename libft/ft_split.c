@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jiholee <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/10/07 14:26:53 by jiholee           #+#    #+#             */
+/*   Updated: 2020/10/07 14:32:18 by jiholee          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 static int	count_words(const char *str, char c)
@@ -7,7 +19,6 @@ static int	count_words(const char *str, char c)
 
 	i = 0;
 	words = 0;
-
 	while (str[i])
 	{
 		if (str[i] != c && (str[i + 1] == c || str[i + 1] == '\0'))
@@ -16,6 +27,7 @@ static int	count_words(const char *str, char c)
 	}
 	return (words);
 }
+
 static int	words_len(char const *s, char c)
 {
 	int			i;
@@ -44,6 +56,7 @@ static void	*leak(char **splitted, int words)
 	free(splitted);
 	return (NULL);
 }
+
 static char	**fill(char const *s, int words, char c, char **splitted)
 {
 	int	i;
@@ -55,7 +68,6 @@ static char	**fill(char const *s, int words, char c, char **splitted)
 	{
 		while (*s == c)
 			s++;
-
 		len = words_len(s, c);
 		if (!(splitted[i] = (char *)malloc(sizeof(char) * (len + 1))))
 			return (leak(splitted, i));
@@ -68,14 +80,13 @@ static char	**fill(char const *s, int words, char c, char **splitted)
 	return (splitted);
 }
 
-char			**ft_split(char const *str, char c)
+char		**ft_split(char const *str, char c)
 {
 	char	**splitted;
 	int		words;
 
 	if (!str)
 		return (NULL);
-
 	words = count_words(str, c);
 	if (!(splitted = (char **)malloc(sizeof(char *) * (words + 1))))
 		return (NULL);
