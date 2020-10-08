@@ -6,7 +6,7 @@
 /*   By: jiholee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/07 14:29:58 by jiholee           #+#    #+#             */
-/*   Updated: 2020/10/07 14:30:00 by jiholee          ###   ########.fr       */
+/*   Updated: 2020/10/08 17:18:51 by jiholee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,42 +17,37 @@ static int		ft_abs(int n)
 	return ((n < 0) ? -n : n);
 }
 
-static void		ft_strrev(char *str)
+static int		ft_len(int n)
 {
-	int		len;
-	int		i;
-	char	tmp;
+	int len;
 
-	len = ft_strlen(str);
-	i = 0;
-	while (i < len / 2)
+	len = (n <= 0) ? 1 : 0;
+	while (n != 0)
 	{
-		tmp = str[i];
-		str[i] = str[len - i - 1];
-		str[len - i - 1] = tmp;
-		i++;
+		++len;
+		n /= 10;
 	}
+	return (len);
 }
 
 char			*ft_itoa(int n)
 {
-	char	*str;
+	char	*res;
 	int		len;
-	int		is_neg;
 
-	is_neg = (n < 0);
-	if (!(str = ft_calloc(11 + is_neg, sizeof(*str))))
+	len = ft_len(n);
+	if (!(res = (char *)malloc(sizeof(char) * (len + 1))))
 		return (NULL);
-	if (is_neg == 0)
-		str[0] = '0';
-	len = 0;
+	res[len] = '\0';
+	if (n < 0)
+		res[0] = '-';
+	else if (n == 0)
+		res[0] = '0';
 	while (n != 0)
 	{
-		str[len++] = '0' + ft_abs(n % 10);
+		--len;
+		res[len] = ft_abs(n % 10) + '0';
 		n /= 10;
 	}
-	if (is_neg)
-		str[len] = '-';
-	ft_strrev(str);
-	return (str);
+	return (res);
 }
